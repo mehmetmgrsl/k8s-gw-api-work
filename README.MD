@@ -40,11 +40,18 @@
 
 - The **Service** forwards the request to the correct **Pods** (your actual application).
 
+
+![Combined types](gw-api-03.png)
+
 ### Kubernetes Traffic Flow
 
 - **Northbound**: Traffic going from inside the cluster to the outside world
 - **Southbound**: Traffic coming from the Internet into the Kubernetes cluster
 - **East/West**: Traffic flowing within the cluster, usually between **services** or **pods**
+
+### Demo
+
+- [Demo](./demo/README.md)
 
 
 ### References
@@ -54,3 +61,6 @@
 
 (3*) [Kubernetes Gateway API - Tech Tutorials with Piyush](https://www.youtube.com/watch?v=2lcx74HUz1U)
 
+(4*) https://gateway-api.sigs.k8s.io/concepts/api-overview/
+
+(5*) https://github.com/kubernetes-sigs/gateway-api
