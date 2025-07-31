@@ -14,6 +14,9 @@
 
 - ![Ingress](gw-api-01.png)
 
+### A comparison of traffic flow between Ingress and Gateway API (6*)
+
+- ![ Ingress vs Gateway API](gw-api-04.png)
 
 ### K8S Gateway API
 - A modern, more powerful **alternative** to the traditional **Ingress**.
@@ -64,3 +67,5 @@
 (4*) https://gateway-api.sigs.k8s.io/concepts/api-overview/
 
 (5*) https://github.com/kubernetes-sigs/gateway-api
+
+(6*) https://techcommunity.microsoft.com/blog/microsoftmissioncriticalblog/application-gateway-for-containers-%E2%80%93-a-new-way-to-ingress-into-aks/4410020
