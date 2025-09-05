@@ -33,15 +33,20 @@
 
 ![How Gateway API Works](gw-api-02.png)
 
-- **User/Client** sends an HTTP request to the cluster.
+- User → Cloud LB → Gateway Controller → Gateway -> HTTPRoute → Service → Pods
 
-- The request first hits the **Gateway**, which is like a **load balancer**.
+  - **User/Client** sends an HTTP request to the cluster.
 
-- That **Gateway** uses rules defined in an **HTTPRoute** to decide where to send the traffic.
+  - The request first hits the **Gateway**, which is like a **load balancer**.
 
-- The **HTTPRoute** sends the request to the correct **Service**.
+  - The request first lands on a **Cloud Load Balancer** (e.g., Azure LB, AWS ELB) that Kubernetes created via a Service type=LoadBalancer.
+  - The Load Balancer forwards the request into the cluster, to the Gateway Controller pods (NGINX, Istio, Envoy, etc.).
 
-- The **Service** forwards the request to the correct **Pods** (your actual application).
+  - That **Gateway** uses rules defined in an **HTTPRoute** to decide where to send the traffic.
+
+  - The **HTTPRoute** sends the request to the correct **Service**.
+
+  - The **Service** forwards the request to the correct **Pods** (your actual application).
 
 
 ![Combined types](gw-api-03.png)
@@ -51,6 +56,22 @@
 - **Northbound**: Traffic going from inside the cluster to the outside world
 - **Southbound**: Traffic coming from the Internet into the Kubernetes cluster
 - **East/West**: Traffic flowing within the cluster, usually between **services** or **pods**
+
+
+###  Cloud Load Balancer (Azure LB / AWS ELB) vs Gateway API
+
+#### Cloud Load Balancer (Azure LB / AWS ELB)
+- Brings traffic from the outside world into the cluster nodes.
+
+- Think of it as the main door of an apartment building.
+
+#### Gateway API
+
+- Decides where the incoming traffic should go inside the cluster.
+
+- Uses rules (host, path, headers) to route to the right Service/Pods.
+
+- Think of it as the reception desk inside the building telling you which floor to go to.
 
 ### Demo
 
