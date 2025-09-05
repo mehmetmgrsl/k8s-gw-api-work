@@ -38,10 +38,10 @@
   - **User/Client** sends an HTTP request to the cluster.
 
   - The request first lands on a **Cloud Load Balancer** (e.g., Azure LB, AWS ELB) that Kubernetes created via a Service type=LoadBalancer.
-  
-  - The Load Balancer forwards the request into the cluster, to the Gateway Controller pods (NGINX, Istio, Envoy, etc.).
 
-  - That **Gateway** uses rules defined in an **HTTPRoute** to decide where to send the traffic.
+  - The Cloud Load Balancer forwards the request into the cluster, to the Gateway Controller pods (NGINX, Istio, Envoy, etc.).
+
+  - The Gateway Controller applies the configuration from the Gateway resource (listeners, TLS, ports). 
 
   - The **HTTPRoute** sends the request to the correct **Service**.
 
